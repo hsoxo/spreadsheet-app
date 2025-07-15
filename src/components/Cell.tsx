@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSheetStore } from "../store";
 import { useCellValue } from "@/store/selectors";
 import { numberToChar } from "@/utils/numberCharConversion";
@@ -29,8 +29,9 @@ const Cell = ({ x, y }: { x: number; y: number }) => {
 
   return (
     <div
+      data-testid={`cell-${cellName}`}
       onClick={() => setEditing(true)}
-      className="w-40 h-8 bg-gray-100 flex items-center justify-center border border-gray-300 cursor-pointer"
+      className="w-32 h-8 bg-gray-100 flex items-center justify-center border border-gray-300 cursor-pointer"
     >
       {editing ? (
         <div className="px-1">

@@ -6,7 +6,7 @@ import { numberToChar } from "@/utils/numberCharConversion";
 
 const Sheet = ({ rows, columns }: { rows: number; columns: number }) => {
   return (
-    <table>
+    <table data-testid="spreadsheet">
       <thead>
         <tr>
           <th />
@@ -19,7 +19,7 @@ const Sheet = ({ rows, columns }: { rows: number; columns: number }) => {
       </thead>
       <tbody>
         {[...Array(rows)].map((_, i) => (
-          <tr key={i}>
+          <tr key={i} data-testid={`row-${i + 1}`}>
             <th>
               <span className="px-2">{i + 1}</span>
             </th>

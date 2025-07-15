@@ -2,7 +2,7 @@
 
 import React from "react";
 import Cell from "./Cell";
-import { numberToChar } from "@/utils";
+import { numberToChar } from "@/utils/numberCharConversion";
 
 const Sheet = ({ rows, columns }: { rows: number; columns: number }) => {
   return (
@@ -20,7 +20,9 @@ const Sheet = ({ rows, columns }: { rows: number; columns: number }) => {
       <tbody>
         {[...Array(rows)].map((_, i) => (
           <tr key={i}>
-            <th>{i + 1}</th>
+            <th>
+              <span className="px-2">{i + 1}</span>
+            </th>
             {[...Array(columns)].map((_, j) => (
               <td key={j}>
                 <Cell x={i} y={j} />

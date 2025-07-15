@@ -1,6 +1,6 @@
 "use client";
 
-import { charToNumber } from "@/utils";
+import { charToNumber } from "@/utils/numberCharConversion";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -16,7 +16,7 @@ export const useSheetStore = create<SheetState>()(
       setCell: (cell: string, value) =>
         set((state) => {
           const col = charToNumber(cell[0]);
-          const row = parseInt(cell[1]);
+          const row = parseInt(cell[1]) - 1;
           const newData = [...state.data];
           if (!newData[row]) {
             newData[row] = [];
@@ -27,7 +27,7 @@ export const useSheetStore = create<SheetState>()(
         }),
     }),
     {
-      name: "sheet-storage", // 存入 localStorage 的 key
+      name: "sheet-storage",
     }
   )
 );

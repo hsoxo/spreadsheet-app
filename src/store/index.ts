@@ -13,7 +13,7 @@ export const useSheetStore = create<SheetState>()(
   persist(
     (set) => ({
       data: [],
-      setCell: (cell: string, value) =>
+      setCell: (cell: string, value: string) =>
         set((state) => {
           const col = charToNumber(cell[0]);
           const row = parseInt(cell[1]) - 1;
@@ -22,7 +22,6 @@ export const useSheetStore = create<SheetState>()(
             newData[row] = [];
           }
           newData[row][col] = value;
-          console.log(newData);
           return { data: newData };
         }),
     }),
